@@ -1,11 +1,7 @@
 package org.example;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -15,42 +11,104 @@ public class Client {
 
     private Client() {}
 
-    private static String generateQuery() {
-        Random random = new Random();
-        String node1 = Integer.toString(random.nextInt(Integer.MAX_VALUE - 1) + 1);
-        String node2 = Integer.toString(random.nextInt(Integer.MAX_VALUE - 1) + 1);
-        
-        String[] queries = new String[]{"A", "D", "Q"};
-        int randomQuery = ThreadLocalRandom.current().nextInt(0, 3);
-        return queries[randomQuery] + ' ' + node1 + ' ' + node2;
+    /**
+     * Performance Analysis:
+     * Response Time(median of 20 trials) vs Frequency of Requests(multiple of ten quires)
+     * @param stub for RMI processing
+     */
+    private static void responseTimeVsRequestsFrequency(BatchProcessing stub) throws RemoteException,
+            InterruptedException {
+
+        int quiresNum = 10, trials = 20, points = 10;
+        for (int j = 0; j < points; j++) {
+
+            long[] median = new long[trials];
+            for (int i = 0; i < trials; i++) {
+
+                String batch = Utils.generateBatch(quiresNum*(j+1), i);
+                // Calculate Response Time
+                long start = System.currentTimeMillis();
+                List<Integer> results = stub.processBatch(batch);
+                long end = System.currentTimeMillis();
+
+                median[i] = (end - start);
+                // Print Output
+                for (int result : results)
+                    System.out.println(result);
+
+                // Sleep till the next batch
+                Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
+            }
+            Arrays.sort(median);
+            System.out.println("Trial " + (j+1) + " : Response Time = " + median[9] + " ms");
+        }
     }
 
-    private static void writeToFile(String batch, int i) {
-        try {
-            Files.writeString(Path.of("batch_" + i), batch,
-                    StandardCharsets.UTF_8);
-        }
-        catch (IOException ex) {
-            System.out.print("Invalid Path");
+
+    /**
+     * Performance Analysis:
+     * Response Time(median of 20 trials) vs Percentage of Add/Delete Operations(multiple of tenth)
+     * Quires = 30 query
+     * @param stub for RMI processing
+     */
+    private static void responseTimeVsOperationsPercentage(BatchProcessing stub) throws RemoteException,
+            InterruptedException {
+
+        int percent = 10, trials = 20, points = 10, quires = 30;
+        for (int j = 0; j < points; j++) {
+
+            long[] median = new long[trials];
+            for (int i = 0; i < trials; i++) {
+
+                String batch = Utils.generateBiasedBatch(quires, i, percent*(j+1));
+                // Calculate Response Time
+                long start = System.currentTimeMillis();
+                List<Integer> results = stub.processBatch(batch);
+                long end = System.currentTimeMillis();
+
+                median[i] = (end - start);
+                // Print Output
+                for (int result : results)
+                    System.out.println(result);
+
+                // Sleep till the next batch
+                Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
+            }
+            Arrays.sort(median);
+            System.out.println("Trial " + (j+1) + " : Response Time = " + median[9] + " ms");
         }
     }
 
-    private static String generateBatch(int quiresMaxNum, int batchNum) throws RemoteException {
+    /**
+     * Performance Analysis:
+     * Response Time(median of 20 trials) vs Number of Nodes(1:5)
+     * Quires = 30 query
+     * @param stub for RMI processing
+     */
+    private static void responseTimeVsNumberOfNodes(BatchProcessing stub) throws RemoteException, InterruptedException {
 
-        int randomNum = ThreadLocalRandom.current().nextInt(1, quiresMaxNum + 1);
-        StringBuilder batch = new StringBuilder();
+        int trials = 20, quires = 30;
+        long[] median = new long[trials];
+        for (int i = 0; i < trials; i++) {
 
-        for (int i = 0; i < randomNum; i++) {
-            String query = generateQuery();
-            batch.append(query);
-            batch.append('\n');
+            String batch = Utils.generateBatch(quires, i);
+            // Calculate Response Time
+            long start = System.currentTimeMillis();
+            List<Integer> results = stub.processBatch(batch);
+            long end = System.currentTimeMillis();
+
+            median[i] = (end - start);
+            // Print Output
+            for (int result : results)
+                System.out.println(result);
+
+            // Sleep till the next batch
+            Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
         }
-        batch.append('F');
-
-        writeToFile(batch.toString(), batchNum);
-
-        return batch.toString();
+        Arrays.sort(median);
+        System.out.println("Response Time = " + median[9] + " ms");
     }
+
 
     public static void main(String[] args) {
 
@@ -59,22 +117,10 @@ public class Client {
             Registry registry = LocateRegistry.getRegistry("192.168.1.5", Registry.REGISTRY_PORT);
             BatchProcessing stub = (BatchProcessing) registry.lookup("BatchProcessing");
 
-            for (int i = 0; i < 1; i++) {
+            responseTimeVsRequestsFrequency(stub);
+            responseTimeVsOperationsPercentage(stub);
+            responseTimeVsNumberOfNodes(stub);
 
-                String batch = generateBatch(25, i);
-                // Calculate Response Time
-                long start = System.currentTimeMillis();
-                List<Integer> results = stub.processBatch(batch);
-                long end = System.currentTimeMillis();
-
-                System.out.println("Response Time = " + (end - start) + " ms");
-                // Print Output
-                for (int result : results)
-                    System.out.println(result);
-
-                // Sleep till the next batch
-                Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
-            }
         } catch (Exception e) {
             System.err.println("Client exception: " + e);
             e.printStackTrace();
