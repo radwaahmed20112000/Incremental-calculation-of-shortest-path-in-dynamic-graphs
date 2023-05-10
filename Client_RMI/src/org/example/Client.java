@@ -40,7 +40,7 @@ public class Client {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
             }
             Arrays.sort(median);
-            System.out.println("Trial " + (j+1) + " : Response Time = " + median[9] + " ms");
+            System.out.println("Trial " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
         }
     }
 
@@ -61,6 +61,7 @@ public class Client {
             for (int i = 0; i < trials; i++) {
 
                 String batch = Utils.generateBiasedBatch(quires, i, percent*(j+1));
+                System.out.println(batch);
                 // Calculate Response Time
                 long start = System.currentTimeMillis();
                 List<Integer> results = stub.processBatch(batch);
@@ -75,7 +76,7 @@ public class Client {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
             }
             Arrays.sort(median);
-            System.out.println("Trial " + (j+1) + " : Response Time = " + median[9] + " ms");
+            System.out.println("Trial " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
         }
     }
 
@@ -106,7 +107,7 @@ public class Client {
             Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
         }
         Arrays.sort(median);
-        System.out.println("Response Time = " + median[9] + " ms");
+        System.out.println("Response Time = " + median[trials/2] + " ms");
     }
 
 
@@ -114,12 +115,12 @@ public class Client {
 
         try {
             // Connect to RMI Registry
-            Registry registry = LocateRegistry.getRegistry("192.168.1.5", Registry.REGISTRY_PORT);
+            Registry registry = LocateRegistry.getRegistry("192.168.1.14", Registry.REGISTRY_PORT);
             BatchProcessing stub = (BatchProcessing) registry.lookup("BatchProcessing");
 
-            responseTimeVsRequestsFrequency(stub);
+//            responseTimeVsRequestsFrequency(stub);
             responseTimeVsOperationsPercentage(stub);
-            responseTimeVsNumberOfNodes(stub);
+//            responseTimeVsNumberOfNodes(stub);
 
         } catch (Exception e) {
             System.err.println("Client exception: " + e);

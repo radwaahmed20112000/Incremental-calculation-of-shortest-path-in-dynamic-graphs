@@ -4,24 +4,24 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.rmi.RemoteException;
-import java.util.Random;
-import java.util.SplittableRandom;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Stream;
 
 public class Utils {
 
-    private static int[] generateRandomNumsWithPercentage(int percent, int quiresNum) {
+    private static List<Integer> generateRandomNumsWithPercentage(int percent, int quiresNum) {
 
-        int[] randoms = new int[quiresNum];
+        List<Integer> randoms = new ArrayList<>();
         Random rand = new Random();
 
-        for (int i = 0; i < quiresNum; i++) {
-            if (rand.nextDouble() < (double) percent /100)
-                randoms[i] = rand.nextInt(2);
-            else
-                randoms[i] = rand.nextInt(3);
-        }
+        int addDeleteOps = (int) (quiresNum * (double) percent /100);
+        for (int i = 0; i < addDeleteOps; i++)
+            randoms.add(rand.nextInt(2));
+        for (int i = addDeleteOps; i < quiresNum; i++)
+            randoms.add(2);
+
+        Collections.shuffle(randoms);
         return randoms;
     }
 
@@ -64,9 +64,9 @@ public class Utils {
 
         StringBuilder batch = new StringBuilder();
 
-        int[] randomQuires = generateRandomNumsWithPercentage(percent, quiresNum);
+        List<Integer> randomQuires = generateRandomNumsWithPercentage(percent, quiresNum);
         for (int i = 0; i < quiresNum; i++) {
-            String query = generateQuery(randomQuires[i]);
+            String query = generateQuery(randomQuires.get(i));
             batch.append(query);
             batch.append('\n');
         }
