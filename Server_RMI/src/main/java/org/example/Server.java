@@ -12,7 +12,7 @@ public class Server {
 
         try {
             System.setProperty("java.rmi.server.hostname","192.168.1.12");
-            Graph obj = new Graph("init_graph.txt"); //TODO: locking the object
+            Graph obj = new Graph("init_graph.txt");
             BatchProcessing stub = (BatchProcessing) UnicastRemoteObject.exportObject(obj, 0);
             System.out.println("Start Server . . .");
 

@@ -8,18 +8,37 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.rmi.RemoteException;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Graph implements BatchProcessing{
 
     private class Operation{
-        String op;
+        String operation;
         int src;
         int des;
 
-        Operation(String op, int src, int des){
-            this.op = op;
+        Operation(String operation, int src, int des){
+            this.operation = operation;
             this.src = src;
             this.des = des;
+        }
+    }
+    private class ReadThread extends Thread{
+        private int src;
+        private int des;
+        private int result;
+
+        ReadThread(int src, int des){
+            this.src = src;
+            this.des = des;
+        }
+        public void run() {
+            this.result = shortestPath(this.src, this.des);
+        }
+
+        public int getResult() {
+            return result;
         }
     }
     private Map<Integer, Set<Integer>> graph;
@@ -28,8 +47,6 @@ public class Graph implements BatchProcessing{
     final static private String QUERY = "Q";
     final static private String ADD = "A";
     final static private String DELETE = "D";
-
-    public Graph(){}
 
     public Graph(String initFilePath){
 
@@ -62,12 +79,18 @@ public class Graph implements BatchProcessing{
             System.err.println("Error reading graph initialization file: " + e.getMessage());
         }
     }
+
+    /**
+     *
+     * @param batchQuery
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public List<Integer> processBatch(String batchQuery) throws RemoteException {
-        System.out.println("start processBatch");
         String[] queries = batchQuery.split("\n");
 
-        List<Operation> operations = new LinkedList<Operation>();
+        List<Operation> operations = new LinkedList<>();
 
         for (String query:queries) {
             String[] args = query.split(" ");
@@ -79,16 +102,20 @@ public class Graph implements BatchProcessing{
             }
         }
         return execBatch(operations);
+//        try {
+//            return execBatchOptimized(operations);
+//        } catch (InterruptedException e) {
+//            return new LinkedList<>();
+//        }
     }
 
     private boolean isValidOp(String op){
         return op.equals(QUERY) || op.equals(ADD) || op.equals(DELETE);
     }
-    private List<Integer> execBatch(List<Operation> operations){
-        //TODO: optimize
+    private synchronized List<Integer> execBatch(List<Operation> operations){
         List<Integer> res = new LinkedList<>();
         for(Operation op : operations){
-            switch (op.op) {
+            switch (op.operation) {
                 case QUERY:
                     res.add(shortestPath(op.src, op.des));
                     break;
@@ -103,6 +130,54 @@ public class Graph implements BatchProcessing{
             }
         }
        return res;
+    }
+
+    private synchronized List<Integer> execBatchOptimized(List<Operation> operations) throws InterruptedException {
+        List<Integer> res = new LinkedList<>();
+
+        ExecutorService executor = Executors.newFixedThreadPool(200);
+
+        ListIterator<Operation> iterator = operations.listIterator();
+        while (iterator.hasNext()) {
+            Operation op = iterator.next();
+            switch (op.operation) {
+                case QUERY:
+                    Queue<ReadThread> threadQueue = new LinkedList<>();
+                    ReadThread t = new ReadThread(op.src, op.des);
+//                    t.start();
+                    executor.submit(t);
+                    threadQueue.add(t);
+
+                    while(iterator.hasNext()){
+                        op = iterator.next();
+                        if (!op.operation.equals(QUERY)){
+                            iterator.previous();
+                            break;
+                        }
+                        t = new ReadThread(op.src, op.des);
+                        executor.submit(t);
+                        threadQueue.add(t);
+                    }
+                    int nActiveThreads = Thread.activeCount();
+                    System.out.println("There are " + nActiveThreads + " active threads.");
+                    while (!threadQueue.isEmpty()){
+                        t = threadQueue.remove();
+                        t.join();
+                        res.add(t.getResult());
+                    }
+                    break;
+                case ADD:
+                    addEdge(op.src, op.des);
+                    break;
+                case DELETE:
+                    removeEdge(op.src, op.des);
+                    break;
+                default:
+                    System.out.println("Invalid operation: " + op);
+            }
+        }
+
+        return res;
     }
 
     private void addEdge(int u, int v) {
