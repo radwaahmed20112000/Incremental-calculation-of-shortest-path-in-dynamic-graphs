@@ -115,7 +115,7 @@ public class Client {
 
         try {
             // Connect to RMI Registry
-            Registry registry = LocateRegistry.getRegistry("192.168.1.14", Registry.REGISTRY_PORT);
+            Registry registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
             BatchProcessing stub = (BatchProcessing) registry.lookup("BatchProcessing");
 
 //            responseTimeVsRequestsFrequency(stub);

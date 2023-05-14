@@ -5,5 +5,6 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface BatchProcessing extends Remote {
+
     List<Integer> processBatch(String query) throws RemoteException;
 }
