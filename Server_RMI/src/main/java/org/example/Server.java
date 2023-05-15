@@ -11,8 +11,9 @@ public class Server {
     public static void main(String args[]) {
 
         try {
+            Logger logger = new Logger("logs");
             System.setProperty("java.rmi.server.hostname","192.168.1.12");
-            Graph obj = new Graph("init_graph.txt");
+            Graph obj = new Graph("init_graph.txt", logger);
             BatchProcessing stub = (BatchProcessing) UnicastRemoteObject.exportObject(obj, 0);
             System.out.println("Start Server . . .");
 

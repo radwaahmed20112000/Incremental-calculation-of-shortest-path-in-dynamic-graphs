@@ -42,16 +42,18 @@ public class Graph implements BatchProcessing{
         }
     }
     private Map<Integer, Set<Integer>> graph;
+    private Logger logger;
     final static private String INIT_GRAPH_TERM = "S";
     final static private String TERM_BATCH = "F";
     final static private String QUERY = "Q";
     final static private String ADD = "A";
     final static private String DELETE = "D";
 
-    public Graph(String initFilePath){
+    public Graph(String initFilePath, Logger logger){
+        this.logger = logger;
+        logger.log("Start Graph Initialization:");
 
         this.graph = new HashMap<>();
-
         try (BufferedReader reader = new BufferedReader(new FileReader(initFilePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -61,29 +63,20 @@ public class Graph implements BatchProcessing{
                 Integer src = Integer.parseInt(args[0]);
                 Integer des = Integer.parseInt(args[1]);
 
-                if (graph.containsKey(src)){
-                    graph.get(src).add(des);
-                }else {
-                    Set<Integer> adj = new HashSet<>();
-                    adj.add(des);
-                    graph.put(src, adj);
-                }
-
-                if (!graph.containsKey(des)){
-                    Set<Integer> adj = new HashSet<>();
-                    graph.put(des, adj);
-                }
+                addEdge(src, des);
             }
-            System.out.println("Done initializing graph with " + graph.size() + " nodes.");
+
+            logger.log(String.format("Done initializing graph with %d nodes.", graph.size()));
+            logger.log("R");
         } catch (IOException e) {
-            System.err.println("Error reading graph initialization file: " + e.getMessage());
+            logger.log(String.format("Error reading graph initialization file: %s", e.getMessage()));
         }
     }
 
     /**
-     *
-     * @param batchQuery
-     * @return
+     * Processes a batch of operations (Query/Add/Delete) to be performed on the graph.
+     * @param batchQuery a single batch sent by the client via rmi
+     * @return list of integers representing query results in the same order as in batchQuery
      * @throws RemoteException
      */
     @Override
@@ -112,7 +105,9 @@ public class Graph implements BatchProcessing{
     private boolean isValidOp(String op){
         return op.equals(QUERY) || op.equals(ADD) || op.equals(DELETE);
     }
+
     private synchronized List<Integer> execBatch(List<Operation> operations){
+        long startTime = System.currentTimeMillis();  //TODO: log client ID
         List<Integer> res = new LinkedList<>();
         for(Operation op : operations){
             switch (op.operation) {
@@ -129,10 +124,13 @@ public class Graph implements BatchProcessing{
                     System.out.println("Invalid operation: " + op);
             }
         }
-       return res;
+        long duration = System.currentTimeMillis() - startTime;
+        logger.log(String.format("batch processed within %d ms", duration));
+        return res;
     }
 
     private synchronized List<Integer> execBatchOptimized(List<Operation> operations) throws InterruptedException {
+        long startTime = System.currentTimeMillis();  //TODO: log client ID
         List<Integer> res = new LinkedList<>();
 
         ExecutorService executor = Executors.newFixedThreadPool(200);
@@ -176,7 +174,8 @@ public class Graph implements BatchProcessing{
                     System.out.println("Invalid operation: " + op);
             }
         }
-
+        long duration = System.currentTimeMillis() - startTime;
+        logger.log(String.format("batch processed within %d ms", duration));
         return res;
     }
 
@@ -187,6 +186,12 @@ public class Graph implements BatchProcessing{
             graph.put(u, edges);
         }
         edges.add(v);
+
+        if (graph.get(v) == null){
+            graph.put(v, new HashSet<>());
+        }
+
+        logger.logWithTimestamp(String.format("Add edge %d -> %d", u, v));
     }
 
     private void removeEdge(int u, int v) {
@@ -194,11 +199,12 @@ public class Graph implements BatchProcessing{
         if (edges != null) {
             edges.remove(v);
         }
+        logger.logWithTimestamp(String.format("Remove edge between %d and %d", u, v));
     }
 
     private int shortestPath(int u, int v) {
         Map<Integer, Integer> distance = new HashMap<>();
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Queue<Integer> queue = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
 
         visited.add(u);
