@@ -5,11 +5,8 @@ import jdk.dynalink.Operation;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.rmi.RemoteException;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Graph implements BatchProcessing{
 
@@ -22,23 +19,6 @@ public class Graph implements BatchProcessing{
             this.operation = operation;
             this.src = src;
             this.des = des;
-        }
-    }
-    private class ReadThread extends Thread{
-        private int src;
-        private int des;
-        private int result;
-
-        ReadThread(int src, int des){
-            this.src = src;
-            this.des = des;
-        }
-        public void run() {
-            this.result = shortestPath(this.src, this.des);
-        }
-
-        public int getResult() {
-            return result;
         }
     }
     private Map<Integer, Set<Integer>> graph;
@@ -95,11 +75,6 @@ public class Graph implements BatchProcessing{
             }
         }
         return execBatch(operations);
-//        try {
-//            return execBatchOptimized(operations);
-//        } catch (InterruptedException e) {
-//            return new LinkedList<>();
-//        }
     }
 
     private boolean isValidOp(String op){
@@ -112,57 +87,7 @@ public class Graph implements BatchProcessing{
         for(Operation op : operations){
             switch (op.operation) {
                 case QUERY:
-                    res.add(shortestPath(op.src, op.des));
-                    break;
-                case ADD:
-                    addEdge(op.src, op.des);
-                    break;
-                case DELETE:
-                    removeEdge(op.src, op.des);
-                    break;
-                default:
-                    System.out.println("Invalid operation: " + op);
-            }
-        }
-        long duration = System.currentTimeMillis() - startTime;
-        logger.log(String.format("batch processed within %d ms", duration));
-        return res;
-    }
-
-    private synchronized List<Integer> execBatchOptimized(List<Operation> operations) throws InterruptedException {
-        long startTime = System.currentTimeMillis();  //TODO: log client ID
-        List<Integer> res = new LinkedList<>();
-
-        ExecutorService executor = Executors.newFixedThreadPool(200);
-
-        ListIterator<Operation> iterator = operations.listIterator();
-        while (iterator.hasNext()) {
-            Operation op = iterator.next();
-            switch (op.operation) {
-                case QUERY:
-                    Queue<ReadThread> threadQueue = new LinkedList<>();
-                    ReadThread t = new ReadThread(op.src, op.des);
-//                    t.start();
-                    executor.submit(t);
-                    threadQueue.add(t);
-
-                    while(iterator.hasNext()){
-                        op = iterator.next();
-                        if (!op.operation.equals(QUERY)){
-                            iterator.previous();
-                            break;
-                        }
-                        t = new ReadThread(op.src, op.des);
-                        executor.submit(t);
-                        threadQueue.add(t);
-                    }
-                    int nActiveThreads = Thread.activeCount();
-                    System.out.println("There are " + nActiveThreads + " active threads.");
-                    while (!threadQueue.isEmpty()){
-                        t = threadQueue.remove();
-                        t.join();
-                        res.add(t.getResult());
-                    }
+                    res.add(shortestPath(op.src, op.des)); // change here *********************
                     break;
                 case ADD:
                     addEdge(op.src, op.des);
@@ -202,7 +127,25 @@ public class Graph implements BatchProcessing{
         logger.logWithTimestamp(String.format("Remove edge between %d and %d", u, v));
     }
 
-    private int shortestPath(int u, int v) {
+    public int shortestPath(int u, int v) {
+        Map<Integer, Integer> distance = new HashMap<>();
+        distance.put(u, 0);
+
+        // Relax edges n-1 times
+        for (int i = 1; i < graph.size(); i++) {
+            for (int node : graph.keySet()) {
+                for (int neighbor : graph.get(node)) {
+                    if (distance.containsKey(node) && !distance.containsKey(neighbor)) {
+                        distance.put(neighbor, distance.get(node) + 1);
+                    }
+                }
+            }
+        }
+
+        return distance.getOrDefault(v, -1);
+    }
+
+    private int optimizedShortestPath(int u, int v) {
         Map<Integer, Integer> distance = new HashMap<>();
         Queue<Integer> queue = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
@@ -226,5 +169,4 @@ public class Graph implements BatchProcessing{
         }
         return -1;  // no path
     }
-
 }
