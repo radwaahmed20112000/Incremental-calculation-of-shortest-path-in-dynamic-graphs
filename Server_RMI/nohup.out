@@ -1,0 +1,32 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------------< [0;36morg.example:Server_RMI[0;1m >-----------------------[m
+[[1;34mINFO[m] [1mBuilding Server_RMI 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mServer_RMI[0;1m ---[m
+Done initializing graph with 5 nodes.
+Start Server . . .
+Server ready.
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  0.208 s
+[[1;34mINFO[m] Finished at: 2023-05-13T17:15:05+02:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------------< [0;36morg.example:Server_RMI[0;1m >-----------------------[m
+[[1;34mINFO[m] [1mBuilding Server_RMI 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mServer_RMI[0;1m ---[m
+Done initializing graph with 5 nodes.
+Start Server . . .
+Server ready.
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  0.222 s
+[[1;34mINFO[m] Finished at: 2023-05-13T17:21:26+02:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m

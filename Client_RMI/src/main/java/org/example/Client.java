@@ -40,7 +40,7 @@ public class Client {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
             }
             Arrays.sort(median);
-            System.out.println("Trial " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
+            System.out.println("Point " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
         }
     }
 
@@ -76,7 +76,7 @@ public class Client {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
             }
             Arrays.sort(median);
-            System.out.println("Trial " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
+            System.out.println("Point " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
         }
     }
 
@@ -117,6 +117,7 @@ public class Client {
             // Connect to RMI Registry
             Registry registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
             BatchProcessing stub = (BatchProcessing) registry.lookup("BatchProcessing");
+            int clientID = Integer.parseInt(args[2]);
 
 //            responseTimeVsRequestsFrequency(stub);
             responseTimeVsOperationsPercentage(stub);

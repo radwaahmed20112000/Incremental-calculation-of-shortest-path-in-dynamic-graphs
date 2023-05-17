@@ -44,7 +44,15 @@ public class Start {
                             "-path-in-dynamic-graphs/Starter/src/main/java/org/example/Processes/Client_RMI.jar " +
                             server + " " + rmiPort + ";"};
 
-            Runtime.getRuntime().exec(commandArray);
+            process = Runtime.getRuntime().exec(commandArray);
+
+            // Read the output of the process
+            inputStream = process.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
         }
     }
 }
