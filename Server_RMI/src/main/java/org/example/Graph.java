@@ -1,7 +1,5 @@
 package org.example;
 
-import jdk.dynalink.Operation;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +8,7 @@ import java.util.*;
 
 public class Graph implements BatchProcessing{
 
-    private class Operation{
+    private static class Operation{
         String operation;
         int src;
         int des;
@@ -21,8 +19,8 @@ public class Graph implements BatchProcessing{
             this.des = des;
         }
     }
-    private Map<Integer, Set<Integer>> graph;
-    private Logger logger;
+    private final Map<Integer, Set<Integer>> graph;
+    private final Logger logger;
     final static private String INIT_GRAPH_TERM = "S";
     final static private String TERM_BATCH = "F";
     final static private String QUERY = "Q";
@@ -40,8 +38,8 @@ public class Graph implements BatchProcessing{
                 if (line.equals(INIT_GRAPH_TERM)) break;
 
                 String[] args = line.split(" ");
-                Integer src = Integer.parseInt(args[0]);
-                Integer des = Integer.parseInt(args[1]);
+                int src = Integer.parseInt(args[0]);
+                int des = Integer.parseInt(args[1]);
 
                 addEdge(src, des);
             }
@@ -57,10 +55,9 @@ public class Graph implements BatchProcessing{
      * Processes a batch of operations (Query/Add/Delete) to be performed on the graph.
      * @param batchQuery a single batch sent by the client via rmi
      * @return list of integers representing query results in the same order as in batchQuery
-     * @throws RemoteException
      */
     @Override
-    public List<Integer> processBatch(String batchQuery) throws RemoteException {
+    public List<Integer> processBatch(String clientID, String batchQuery) throws RemoteException {
         String[] queries = batchQuery.split("\n");
 
         List<Operation> operations = new LinkedList<>();
@@ -74,20 +71,21 @@ public class Graph implements BatchProcessing{
                 break;
             }
         }
-        return execBatch(operations);
+        return execBatch(clientID, operations);
     }
 
     private boolean isValidOp(String op){
         return op.equals(QUERY) || op.equals(ADD) || op.equals(DELETE);
     }
 
-    private synchronized List<Integer> execBatch(List<Operation> operations){
-        long startTime = System.currentTimeMillis();  //TODO: log client ID
+    private synchronized List<Integer> execBatch(String clientID, List<Operation> operations){
+        logger.log("Client " + clientID);
+        long startTime = System.currentTimeMillis();
         List<Integer> res = new LinkedList<>();
         for(Operation op : operations){
             switch (op.operation) {
                 case QUERY:
-                    res.add(shortestPath(op.src, op.des)); // change here *********************
+                    res.add(optimizedShortestPath(op.src, op.des)); // TODO: change here *********************
                     break;
                 case ADD:
                     addEdge(op.src, op.des);
@@ -105,16 +103,10 @@ public class Graph implements BatchProcessing{
     }
 
     private void addEdge(int u, int v) {
-        Set<Integer> edges = graph.get(u);
-        if (edges == null) {
-            edges = new HashSet<>();
-            graph.put(u, edges);
-        }
+        Set<Integer> edges = graph.computeIfAbsent(u, k -> new HashSet<>());
         edges.add(v);
 
-        if (graph.get(v) == null){
-            graph.put(v, new HashSet<>());
-        }
+        graph.computeIfAbsent(v, k -> new HashSet<>());
 
         logger.logWithTimestamp(String.format("Add edge %d -> %d", u, v));
     }

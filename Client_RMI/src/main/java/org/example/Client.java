@@ -1,7 +1,10 @@
 package org.example;
-import java.rmi.RemoteException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -16,31 +19,39 @@ public class Client {
      * Response Time(median of 20 trials) vs Frequency of Requests(multiple of ten quires)
      * @param stub for RMI processing
      */
-    private static void responseTimeVsRequestsFrequency(BatchProcessing stub) throws RemoteException,
-            InterruptedException {
+    private static void responseTimeVsRequestsFrequency(boolean optimized, String clientID, BatchProcessing stub)
+            throws IOException, InterruptedException {
 
-        int quiresNum = 10, trials = 20, points = 10;
+        Logger logger = new Logger(clientID + "/responseTimeVsRequestsFrequency.txt");
+        int quiresNum = 0, trials = 5, points = 10, percent = 50;
         for (int j = 0; j < points; j++) {
-
             long[] median = new long[trials];
+            quiresNum += 200;
             for (int i = 0; i < trials; i++) {
+                String path = clientID + "/responseTimeVsRequestsFrequency/batch_" + j + "_Trial_" + i + ".txt";
+                String batch;
 
-                String batch = Utils.generateBatch(quiresNum*(j+1), i);
+                if(optimized) {
+                    batch = new String(Files.readAllBytes(Paths.get(path)));
+                    System.out.println("Opt");
+                }
+                else batch = Utils.generateBiasedBatch(path, quiresNum, percent);
+
                 // Calculate Response Time
                 long start = System.currentTimeMillis();
-                List<Integer> results = stub.processBatch(batch);
+                List<Integer> results = stub.processBatch(clientID, batch);
                 long end = System.currentTimeMillis();
 
                 median[i] = (end - start);
                 // Print Output
-                for (int result : results)
-                    System.out.println(result);
+//                for (int result : results)
+//                    System.out.println(result);
 
                 // Sleep till the next batch
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
             }
             Arrays.sort(median);
-            System.out.println("Point " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
+            logger.log("Point " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
         }
     }
 
@@ -51,32 +62,37 @@ public class Client {
      * Quires = 30 query
      * @param stub for RMI processing
      */
-    private static void responseTimeVsOperationsPercentage(BatchProcessing stub) throws RemoteException,
-            InterruptedException {
+    private static void responseTimeVsOperationsPercentage(boolean optimized, String clientID, BatchProcessing stub)
+            throws IOException, InterruptedException {
 
-        int percent = 10, trials = 20, points = 10, quires = 30;
+        Logger logger = new Logger(clientID + "/responseTimeVsOperationsPercentage.txt");
+
+        int percent = 10, trials = 5, points = 10, quires = 1000;
         for (int j = 0; j < points; j++) {
 
             long[] median = new long[trials];
             for (int i = 0; i < trials; i++) {
 
-                String batch = Utils.generateBiasedBatch(quires, i, percent*(j+1));
-                System.out.println(batch);
+                String path = clientID + "/responseTimeVsOperationsPercentage/batch_"  + j + "_Trial_" + i + ".txt";
+                String batch;
+                if(optimized) batch = new String(Files.readAllBytes(Paths.get(path)));
+                else batch = Utils.generateBiasedBatch(path, quires, percent*(j+1));
+
                 // Calculate Response Time
                 long start = System.currentTimeMillis();
-                List<Integer> results = stub.processBatch(batch);
+                List<Integer> results = stub.processBatch(clientID, batch);
                 long end = System.currentTimeMillis();
 
                 median[i] = (end - start);
                 // Print Output
-                for (int result : results)
-                    System.out.println(result);
+//                for (int result : results)
+//                    System.out.println(result);
 
                 // Sleep till the next batch
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
             }
             Arrays.sort(median);
-            System.out.println("Point " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
+            logger.log("Point " + (j+1) + ": Response Time = " + median[trials/2] + " ms");
         }
     }
 
@@ -86,28 +102,34 @@ public class Client {
      * Quires = 30 query
      * @param stub for RMI processing
      */
-    private static void responseTimeVsNumberOfNodes(BatchProcessing stub) throws RemoteException, InterruptedException {
+    private static void responseTimeVsNumberOfNodes(boolean optimized, String clientID, BatchProcessing stub)
+            throws IOException, InterruptedException {
 
-        int trials = 20, quires = 30;
+        Logger logger = new Logger(clientID + "/responseTimeVsNumberOfNodes.txt");
+        String path = clientID + "/responseTimeVsNumberOfNodes/batch_";
+
+        int trials = 5, quires = 1000, percent = 50;
         long[] median = new long[trials];
         for (int i = 0; i < trials; i++) {
+            String batch;
+            if(optimized) batch = new String(Files.readAllBytes(Paths.get(path + i + ".txt")));
+            else batch = Utils.generateBiasedBatch(path + i + ".txt", quires, percent);
 
-            String batch = Utils.generateBatch(quires, i);
             // Calculate Response Time
             long start = System.currentTimeMillis();
-            List<Integer> results = stub.processBatch(batch);
+            List<Integer> results = stub.processBatch(clientID, batch);
             long end = System.currentTimeMillis();
 
             median[i] = (end - start);
             // Print Output
-            for (int result : results)
-                System.out.println(result);
+//            for (int result : results)
+//                System.out.println(result);
 
             // Sleep till the next batch
             Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
         }
         Arrays.sort(median);
-        System.out.println("Response Time = " + median[trials/2] + " ms");
+        logger.log("Response Time = " + median[trials/2] + " ms");
     }
 
 
@@ -117,11 +139,32 @@ public class Client {
             // Connect to RMI Registry
             Registry registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
             BatchProcessing stub = (BatchProcessing) registry.lookup("BatchProcessing");
-            int clientID = Integer.parseInt(args[2]);
 
-//            responseTimeVsRequestsFrequency(stub);
-            responseTimeVsOperationsPercentage(stub);
-//            responseTimeVsNumberOfNodes(stub);
+            if(args[3].compareTo("0") == 0)
+                responseTimeVsRequestsFrequency(Objects.equals(args[4], "1"), args[2], stub);
+            else if(args[3].compareTo("1") == 0)
+                responseTimeVsOperationsPercentage(Objects.equals(args[4], "1"), args[2], stub);
+            else if(args[3].compareTo("2") == 0)
+                responseTimeVsNumberOfNodes(Objects.equals(args[4], "1"), args[2], stub);
+            else if(args[3].compareTo("3") == 0) {
+                String batch;
+                if(Objects.equals(args[4], "1"))
+                    batch = new String(Files.readAllBytes(Paths.get("Input.txt")));
+                else
+                    batch = Utils.generateBiasedBatch(args[2] + "/batch.txt" , 1000, 50);
+
+                long start = System.currentTimeMillis();
+                List<Integer> results = stub.processBatch(args[2], batch);
+                long end = System.currentTimeMillis();
+
+                Logger logger = new Logger(args[2] + "/output.txt");
+                for (int i = 0; i <results.size(); i++)
+                    logger.log(String.valueOf(results.get(i)));
+
+                logger.log("Response Time = " + (end - start) + " ms");
+            }
+
+
 
         } catch (Exception e) {
             System.err.println("Client exception: " + e);

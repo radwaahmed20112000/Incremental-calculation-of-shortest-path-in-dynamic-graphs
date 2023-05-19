@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -26,8 +27,8 @@ public class Utils {
 
     private static String generateQuery(int query) {
         Random random = new Random();
-        String node1 = Integer.toString(random.nextInt(Integer.MAX_VALUE - 1) + 1);
-        String node2 = Integer.toString(random.nextInt(Integer.MAX_VALUE - 1) + 1);
+        String node1 = Integer.toString(random.nextInt(150 - 1) + 1);
+        String node2 = Integer.toString(random.nextInt(150 - 1) + 1);
 
         String[] queries = new String[]{"A", "D", "Q"};
         if(query == -1)
@@ -35,9 +36,10 @@ public class Utils {
         return queries[query] + ' ' + node1 + ' ' + node2;
     }
 
-    private static void writeToFile(String batch, int i) {
+    private static void writeToFile(String batch, String path) {
+        pathCheck(path);
         try {
-            Files.writeString(Path.of("batch_" + i), batch,
+            Files.writeString(Path.of(path), batch,
                     StandardCharsets.UTF_8);
         }
         catch (IOException ex) {
@@ -45,21 +47,7 @@ public class Utils {
         }
     }
 
-    public static String generateBatch(int quiresNum, int batchNum) {
-        StringBuilder batch = new StringBuilder();
-
-        for (int i = 0; i < quiresNum; i++) {
-            String query = generateQuery(-1);
-            batch.append(query);
-            batch.append('\n');
-        }
-        batch.append('F');
-
-        writeToFile(batch.toString(), batchNum);
-
-        return batch.toString();
-    }
-    public static String generateBiasedBatch(int quiresNum, int batchNum, int percent) {
+    public static String generateBiasedBatch(String path, int quiresNum, int percent) {
 
         StringBuilder batch = new StringBuilder();
 
@@ -71,8 +59,23 @@ public class Utils {
         }
         batch.append('F');
 
-        writeToFile(batch.toString(), batchNum);
+        writeToFile(batch.toString(), path);
 
         return batch.toString();
+    }
+    public static void pathCheck(String path) {
+        File file = new File(path);
+
+        // Get the parent directory
+        File parentDir = file.getParentFile();
+
+        // Create the parent directory and any missing ancestors
+        if (!parentDir.exists()) {
+            boolean success = parentDir.mkdirs();
+            if (!success) {
+                // Failed to create the directory
+                throw new RuntimeException("Failed to create directory: " + parentDir.getAbsolutePath());
+            }
+        }
     }
 }

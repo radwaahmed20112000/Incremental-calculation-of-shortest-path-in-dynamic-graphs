@@ -5,14 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a742237e-9ea3-432e-9b24-1a775db1fe39" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/init_graph.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch_0" beforeDir="false" afterPath="$PROJECT_DIR$/batch_0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BatchProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BatchProcessing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/BatchProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/BatchProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/BatchProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/BatchProcessing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph$Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph$Operation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph$ReadThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/Client_RMI.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/Server_RMI.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/batch_0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/system.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Starter/src/main/java/org/example/system.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -33,6 +58,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/radwa/Documents/College/Distributed Systems/Incremental-calculation-of-shortest-path-in-dynamic-graphs/Client_RMI/src/main/java/org/example/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -81,6 +107,9 @@
       <workItem from="1684075402110" duration="666000" />
       <workItem from="1684094138212" duration="1582000" />
       <workItem from="1684235637424" duration="368000" />
+      <workItem from="1684412603295" duration="11082000" />
+      <workItem from="1684453425543" duration="82000" />
+      <workItem from="1684453792459" duration="1029000" />
     </task>
     <servers />
   </component>
