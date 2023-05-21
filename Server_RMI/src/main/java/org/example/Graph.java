@@ -77,7 +77,7 @@ public class Graph implements BatchProcessing{
     private boolean isValidOp(String op){
         return op.equals(QUERY) || op.equals(ADD) || op.equals(DELETE);
     }
-
+// 2253 ms
     private synchronized List<Integer> execBatch(String clientID, List<Operation> operations){
         logger.log("Client " + clientID);
         long startTime = System.currentTimeMillis();
@@ -85,7 +85,7 @@ public class Graph implements BatchProcessing{
         for(Operation op : operations){
             switch (op.operation) {
                 case QUERY:
-                    res.add(optimizedShortestPath(op.src, op.des)); // TODO: change here *********************
+                    res.add(shortestPath(op.src, op.des)); // TODO: change here *********************
                     break;
                 case ADD:
                     addEdge(op.src, op.des);

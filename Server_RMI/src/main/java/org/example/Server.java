@@ -13,13 +13,13 @@ public class Server {
         try {
 
             Logger logger = new Logger("logs");
-            System.setProperty("java.rmi.server.hostname", args[0]);
+            System.setProperty("java.rmi.server.hostname", "192.168.1.14");
             Graph obj = new Graph("init_graph.txt", logger);
             BatchProcessing stub = (BatchProcessing) UnicastRemoteObject.exportObject(obj, 0);
             System.out.println("Start Server . . .");
 
             // Bind the remote object's stub in the registry
-            Registry registry = LocateRegistry.createRegistry(Integer.parseInt(args[1]));
+            Registry registry = LocateRegistry.createRegistry(1199);
             registry.bind("BatchProcessing", stub);
 
             System.out.println("Server ready.");

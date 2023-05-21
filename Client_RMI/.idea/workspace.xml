@@ -5,25 +5,238 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a742237e-9ea3-432e-9b24-1a775db1fe39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/init_graph.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch_0" beforeDir="false" afterPath="$PROJECT_DIR$/batch_0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BatchProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BatchProcessing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/BatchProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/BatchProcessing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/src/main/java/org/example/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/BatchProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/BatchProcessing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph$Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph$Operation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph$ReadThread.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/classes/org/example/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server_RMI/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Server_RMI/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes.txt/2023-05-19 02:35:48.998" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes.txt/2023-05-19 02:37:57.596" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes.txt/2023-05-19 02:40:26.289" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes/batch_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes/batch_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes/batch_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes/batch_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsNumberOfNodes/batch_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage.txt/2023-05-19 01:45:49.051" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage.txt/2023-05-19 02:11:31.619" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_0_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_0_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_0_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_0_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_0_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_1_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_1_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_1_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_1_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_1_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_2_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_2_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_2_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_2_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_2_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_3_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_3_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_3_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_3_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_3_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_4_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_4_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_4_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_4_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_4_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_5_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_5_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_5_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_5_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_5_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_6_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_6_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_6_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_6_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_6_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_7_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_7_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_7_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_7_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_7_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_8_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_8_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_8_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_8_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_8_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_9_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_9_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_9_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_9_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsOperationsPercentage/batch_9_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency.txt/2023-05-19 00:57:26.85" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency.txt/2023-05-19 01:20:37.848" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_0_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_0_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_0_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_0_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_0_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_1_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_1_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_1_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_1_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_1_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_2_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_2_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_2_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_2_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_2_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_3_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_3_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_3_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_3_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_3_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_4_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_4_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_4_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_4_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_4_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_5_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_5_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_5_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_5_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_5_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_6_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_6_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_6_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_6_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_6_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_7_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_7_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_7_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_7_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_7_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_8_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_8_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_8_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_8_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_8_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_9_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_9_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_9_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_9_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client0/responseTimeVsRequestsFrequency/batch_9_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsNumberOfNodes.txt/2023-05-19 02:40:26.297" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage.txt/2023-05-19 01:45:49.04" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage.txt/2023-05-19 02:11:31.633" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_0_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_0_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_0_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_0_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_0_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_1_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_1_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_1_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_1_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_1_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_2_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_2_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_2_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_2_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_2_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_3_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_3_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_3_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_3_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_3_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_4_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_4_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_4_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_4_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_4_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_5_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_5_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_5_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_5_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_5_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_6_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_6_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_6_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_6_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_6_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_7_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_7_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_7_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_7_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_7_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_8_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_8_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_8_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_8_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_8_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_9_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_9_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_9_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_9_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsOperationsPercentage/batch_9_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency.txt/2023-05-19 00:57:26.863" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency.txt/2023-05-19 01:20:37.869" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_0_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_0_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_0_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_0_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_0_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_1_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_1_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_1_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_1_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_1_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_2_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_2_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_2_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_2_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_2_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_3_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_3_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_3_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_3_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_3_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_4_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_4_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_4_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_4_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_4_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_5_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_5_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_5_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_5_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_5_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_6_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_6_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_6_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_6_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_6_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_7_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_7_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_7_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_7_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_7_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_8_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_8_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_8_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_8_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_8_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_9_Trial_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_9_Trial_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_9_Trial_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_9_Trial_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client1/responseTimeVsRequestsFrequency/batch_9_Trial_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/Client2/responseTimeVsNumberOfNodes.txt/2023-05-19 02:40:26.279" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/logs/2023-05-18 23:39:28.263" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/logs/2023-05-19 02:11:31.53" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/logs/2023-05-19 02:35:48.871" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/logs/2023-05-19 02:37:57.513" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/logs/2023-05-19 02:40:26.176" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/Client_RMI.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/Server_RMI.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/batch_0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Processes/init_graph.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Starter/init_graph.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Starter/src/main/java/org/example/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Starter/src/main/java/org/example/system.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Starter/src/main/java/org/example/system.properties" afterDir="false" />
     </list>
@@ -73,10 +286,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/org/example" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Client2">
+    <configuration name="Client1" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Client" />
       <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1199 Client1 1 0" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -87,9 +301,147 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Client10" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client10 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client11" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client11 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client12" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client12 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client13" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client13 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client14" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client14 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client15" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client15 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1199 Client2 1 0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client3" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client3 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client4" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client4 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client5" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client5 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client6" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client6 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client7" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client7 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client8" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client8 2 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client9" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1099 Client9 2 11" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Trial_Client" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.Client" />
+      <module name="Client_RMI" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.14 1199 Trial_Client 3 0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client10" />
+      <item itemvalue="Application.Client2" />
+      <item itemvalue="Application.Client3" />
+      <item itemvalue="Application.Client4" />
+      <item itemvalue="Application.Client5" />
+      <item itemvalue="Application.Client6" />
+      <item itemvalue="Application.Client7" />
+      <item itemvalue="Application.Client8" />
+      <item itemvalue="Application.Client9" />
+      <item itemvalue="Application.Client11" />
+      <item itemvalue="Application.Client12" />
+      <item itemvalue="Application.Client13" />
+      <item itemvalue="Application.Client14" />
+      <item itemvalue="Application.Client15" />
+      <item itemvalue="Application.Trial_Client" />
+      <item itemvalue="Application.Client1" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Client1" />
       </list>
     </recent_temporary>
   </component>
@@ -110,6 +462,13 @@
       <workItem from="1684412603295" duration="11082000" />
       <workItem from="1684453425543" duration="82000" />
       <workItem from="1684453792459" duration="1029000" />
+      <workItem from="1684494856391" duration="12517000" />
+      <workItem from="1684509894676" duration="9001000" />
+      <workItem from="1684527783919" duration="604000" />
+      <workItem from="1684537760827" duration="665000" />
+      <workItem from="1684597889042" duration="8000" />
+      <workItem from="1684598112932" duration="1144000" />
+      <workItem from="1684677204768" duration="1336000" />
     </task>
     <servers />
   </component>

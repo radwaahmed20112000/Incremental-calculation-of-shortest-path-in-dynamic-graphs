@@ -22,13 +22,14 @@ public class Client {
     private static void responseTimeVsRequestsFrequency(boolean optimized, String clientID, BatchProcessing stub)
             throws IOException, InterruptedException {
 
-        Logger logger = new Logger(clientID + "/responseTimeVsRequestsFrequency.txt");
+        Logger logger = new Logger("Client" + clientID + "/responseTimeVsRequestsFrequency.txt");
         int quiresNum = 0, trials = 5, points = 10, percent = 50;
         for (int j = 0; j < points; j++) {
             long[] median = new long[trials];
             quiresNum += 200;
             for (int i = 0; i < trials; i++) {
-                String path = clientID + "/responseTimeVsRequestsFrequency/batch_" + j + "_Trial_" + i + ".txt";
+                String path = "Client" + clientID + "/responseTimeVsRequestsFrequency/batch_"
+                        + j + "_Trial_" + i + ".txt";
                 String batch;
 
                 if(optimized) {
@@ -43,9 +44,6 @@ public class Client {
                 long end = System.currentTimeMillis();
 
                 median[i] = (end - start);
-                // Print Output
-//                for (int result : results)
-//                    System.out.println(result);
 
                 // Sleep till the next batch
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
@@ -65,7 +63,7 @@ public class Client {
     private static void responseTimeVsOperationsPercentage(boolean optimized, String clientID, BatchProcessing stub)
             throws IOException, InterruptedException {
 
-        Logger logger = new Logger(clientID + "/responseTimeVsOperationsPercentage.txt");
+        Logger logger = new Logger("Client" + clientID + "/responseTimeVsOperationsPercentage.txt");
 
         int percent = 10, trials = 5, points = 10, quires = 1000;
         for (int j = 0; j < points; j++) {
@@ -73,7 +71,8 @@ public class Client {
             long[] median = new long[trials];
             for (int i = 0; i < trials; i++) {
 
-                String path = clientID + "/responseTimeVsOperationsPercentage/batch_"  + j + "_Trial_" + i + ".txt";
+                String path = "Client" + clientID + "/responseTimeVsOperationsPercentage/batch_"
+                        + j + "_Trial_" + i + ".txt";
                 String batch;
                 if(optimized) batch = new String(Files.readAllBytes(Paths.get(path)));
                 else batch = Utils.generateBiasedBatch(path, quires, percent*(j+1));
@@ -84,9 +83,6 @@ public class Client {
                 long end = System.currentTimeMillis();
 
                 median[i] = (end - start);
-                // Print Output
-//                for (int result : results)
-//                    System.out.println(result);
 
                 // Sleep till the next batch
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
@@ -105,8 +101,8 @@ public class Client {
     private static void responseTimeVsNumberOfNodes(boolean optimized, String clientID, BatchProcessing stub)
             throws IOException, InterruptedException {
 
-        Logger logger = new Logger(clientID + "/responseTimeVsNumberOfNodes.txt");
-        String path = clientID + "/responseTimeVsNumberOfNodes/batch_";
+        Logger logger = new Logger("Client" + clientID + "/responseTimeVsNumberOfNodes13");
+        String path = "Client" + clientID + "/responseTimeVsNumberOfNodes13/batch_";
 
         int trials = 5, quires = 1000, percent = 50;
         long[] median = new long[trials];
@@ -121,9 +117,6 @@ public class Client {
             long end = System.currentTimeMillis();
 
             median[i] = (end - start);
-            // Print Output
-//            for (int result : results)
-//                System.out.println(result);
 
             // Sleep till the next batch
             Thread.sleep(ThreadLocalRandom.current().nextInt(1, 11)* 1000L);
@@ -151,20 +144,19 @@ public class Client {
                 if(Objects.equals(args[4], "1"))
                     batch = new String(Files.readAllBytes(Paths.get("Input.txt")));
                 else
-                    batch = Utils.generateBiasedBatch(args[2] + "/batch.txt" , 1000, 50);
+                    batch = Utils.generateBiasedBatch("Client" + args[2] +
+                            "/batch.txt" , Integer.parseInt(args[5]), 50);
+
+                System.out.println("Batch");
 
                 long start = System.currentTimeMillis();
                 List<Integer> results = stub.processBatch(args[2], batch);
                 long end = System.currentTimeMillis();
 
-                Logger logger = new Logger(args[2] + "/output.txt");
-                for (int i = 0; i <results.size(); i++)
-                    logger.log(String.valueOf(results.get(i)));
-
+                Logger logger = new Logger("Client" + args[2] + "/output");
+                for (Integer result : results) logger.log(String.valueOf(result));
                 logger.log("Response Time = " + (end - start) + " ms");
             }
-
-
 
         } catch (Exception e) {
             System.err.println("Client exception: " + e);

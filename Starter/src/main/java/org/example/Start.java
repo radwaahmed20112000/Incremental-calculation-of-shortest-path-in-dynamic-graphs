@@ -2,54 +2,67 @@ package org.example;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Start {
     public static void main(String[] args) throws IOException, InterruptedException {
+
         Properties props = new Properties();
         try {
-            props.load(new FileInputStream("/home/radwa/Documents/College/DistributedSystems/Incremental-" +
-                    "calculation-of-shortest-path-in-dynamic-graphs/Starter/src/main/java/org/example/system.properties"));
+            props.load(new FileInputStream("./src/main/java/org/example/system.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // Get the values of the properties
         String server = props.getProperty("GSP.server");
         String rmiPort = props.getProperty("GSP.rmiregistry.port");
 
-        String[] commandArray = { "/bin/bash", "-c",
-                "java -jar /home/radwa/Documents/College/DistributedSystems/Incremental-calculation-of-shortest" +
-                        "-path-in-dynamic-graphs/Starter/src/main/java/org/example/Processes/Server_RMI_1.jar " +
+        // Arguments: <server-ip> <port>
+        // Server_RMI_1/0.jav -> Optimized or Not
+        String[] commandArr = { "/bin/bash", "-c",
+                "java -jar ./src/main/java/org/example/Processes/Server_RMI_0.jar " +
                         server + " " + rmiPort + ";"};
-        Process process = Runtime.getRuntime().exec(commandArray);
+        Runtime.getRuntime().exec(commandArr);
 
-        // Read the output of the process
-        InputStream inputStream = process.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        ExecutorService executor = Executors.newFixedThreadPool(Integer.parseInt(props.
+                getProperty("GSP.numberOfnodes")));
 
-        int clientsNumber = Integer.parseInt(props.getProperty("GSP.numberOfnodes"));
+        // Arguments: <server-ip> <port> <client-id> <service-type> <input-type:file or random> <batch-size>
+        for (int i = 0; i < Integer.parseInt(props.getProperty("GSP.numberOfnodes")); i++) {
+            String node = props.getProperty("GSP.node" + i);
+            System.out.println("Client " + i + ": " + node);
 
-        String[] clients = new String[clientsNumber];
-        Process[] clientProcesses = new Process[clientsNumber]; // array to store the client processes
-        for (int i = 0; i < clientsNumber; i++) {
-            clients[i] = props.getProperty("GSP.node" + i);
-            System.out.println("Client " + i + ": " + clients[i]);
+            String[] commandArray = { "/bin/bash", "-c",
+                    "java -jar ./src/main/java/org/example/Processes/Client_RMI.jar " +
+                            server + " " + rmiPort + " " + i + " 3 0 1000;"};
 
-            commandArray = new String[]{"/bin/bash", "-c",
-                    "java -jar /home/radwa/Documents/College/DistributedSystems/Incremental-calculation-of-shortest" +
-                            "-path-in-dynamic-graphs/Starter/src/main/java/org/example/Processes/Client_RMI.jar " +
-                            server + " " + rmiPort + " Client" + i + " 2 1;"};
+            Process process = Runtime.getRuntime().exec(commandArray);
 
-            clientProcesses[i] = Runtime.getRuntime().exec(commandArray);
-
-            // Read the output of the process
-            inputStream = clientProcesses[i].getInputStream();
-            reader = new BufferedReader(new InputStreamReader(inputStream));
+            // Submit the process as a task to the executor
+            executor.submit(() -> {
+                try {
+                    // Read the output of the process
+                    InputStream inputStream = process.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                    // Wait for the process to complete
+                    process.waitFor();
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
         }
 
-        // Wait for all client processes to complete
-        for (int i = 0; i < clientsNumber; i++) {
-            clientProcesses[i].waitFor();
+        // Shutdown the executor once all tasks have been submitted
+        executor.shutdown();
+
+        // Wait for all tasks to complete
+        while (!executor.isTerminated()) {
+            Thread.sleep(1000);
         }
 
         // Exit the program
